@@ -2,9 +2,20 @@
  - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
  - ` cd laravel-docker ` 
  - ` docker-compose up -d --build site `
+ - ` composer create-project laravel/laravel ./src`
+ - ` composer create-project "laravel/laravel=8.1.*" ./src`
  - ` cp src/.env.example src/.env`
- - ` docker-compose run --rm composer install `
- - ` docker-compose run --rm artisan key:generate `
+ - ` vim src/.env`
+
+## .envの書き換え
+ - ` DB_CONNECTION=mysql `
+ - ` DB_HOST=mysql `
+ - ` DB_PORT=3306 `
+ - ` DB_DATABASE=homestead `
+ - ` DB_USERNAME=homestead `
+ - ` DB_PASSWORD=secret `
+
+## Migrations
  - ` docker-compose run --rm artisan migrate `
 
 ### ローカルホストへアクセス
