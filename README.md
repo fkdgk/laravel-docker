@@ -1,4 +1,4 @@
-# DockerでLaravelを動かすためのファイル一式
+# LaravelをDockerで動かすためのファイル一式
  - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
  - ` cd laravel-docker ` 
  - ` docker-compose up -d --build site `
