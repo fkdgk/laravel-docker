@@ -1,6 +1,8 @@
-`docker-compose up -d --build site`
-
-`docker-compose run --rm composer create-project laravel/laravel .`
+# DockerでLaravelを動かすためのファイル一式
+` git clone https://github.com/fkdgk/laravel-docker.git ` 
+` cd laravel-docker ` 
+` docker-compose up -d --build site`
+` docker-compose run --rm composer update `
 
 ### .env の書き換え
 - ` DB_CONNECTION=mysql `
@@ -9,6 +11,11 @@
 - ` DB_DATABASE=homestead `
 - ` DB_USERNAME=homestead `
 - ` DB_PASSWORD=secret `
+
+### Dockerの終了
+`docker-compose down`
+
+()`docker-compose run --rm composer create-project laravel/laravel .`
 
 ### command
 - `docker-compose run --rm composer update`
