@@ -1,19 +1,21 @@
 # DockerでLaravelを動かすためのファイル一式
-` git clone https://github.com/fkdgk/laravel-docker.git ` 
-` cd laravel-docker ` 
-` docker-compose up -d --build site `
-` docker-compose run --rm composer update `
-` cp src/.env.example src/.env`
-` docker-compose run --rm artisan key:generate `
-` docker-compose run --rm artisan migrate `
+ - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
+ - ` cd laravel-docker ` 
+ - ` docker-compose up -d --build site `
+ - ` docker-compose run --rm composer update `
+ - ` cp src/.env.example src/.env`
 
-### .env の変更内容
+### src/.env の内容を変更する
 - ` DB_CONNECTION=mysql `
 - ` DB_HOST=mysql `
 - ` DB_PORT=3306 `
 - ` DB_DATABASE=homestead `
 - ` DB_USERNAME=homestead `
 - ` DB_PASSWORD=secret `
+
+
+ - ` docker-compose run --rm artisan key:generate `
+ - ` docker-compose run --rm artisan migrate `
 
 
 ### Dockerの終了
