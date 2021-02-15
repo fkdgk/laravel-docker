@@ -37,6 +37,7 @@ services:
       SERVICE_NAME: mysql
     networks:
       - laravel
+      
   # phpmyadmin:
   #   image: phpmyadmin/phpmyadmin
   #   environment:
@@ -79,7 +80,7 @@ services:
       - laravel
 
   npm:
-    image: node:13.7
+    image: node:15.7
     container_name: npm
     volumes:
       - ./src:/var/www/html

@@ -1,49 +1,108 @@
-# LaravelをDockerで動かすためのファイル一式
- - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
- - ` cd laravel-docker ` 
- - ` docker-compose up -d --build site `
- - ` composer create-project laravel/laravel ./src`
- - ` composer create-project "laravel/laravel=8.1.*" ./src`
- - ` cp src/.env.example src/.env`
- - ` vim src/.env`
+# LaravelをDockerで動かすための設定ファイル
 
-## .envの書き換え
- - ` DB_CONNECTION=mysql `
- - ` DB_HOST=mysql `
- - ` DB_PORT=3306 `
- - ` DB_DATABASE=homestead `
- - ` DB_USERNAME=homestead `
- - ` DB_PASSWORD=secret `
+ <pre> git clone https://github.com/fkdgk/laravel-docker.git
+ <br> cd laravel-docker
+ <br> docker-compose up -d --build site</pre>
 
-## Migrations
- - ` docker-compose run --rm artisan migrate `
 
-### ローカルホストへアクセス
+## Laravelのインストール
+<dl>
+  <dt><h3>最新版  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dd>
+    <pre> docker-compose run --rm  composer create-project laravel/laravel . </pre>
+  </dd>
+  <dt><h3>バージョン指定  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dd>
+    <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.3.*" . </pre>
+  </dd>
+</dl>
+
+<dl>
+  <dt><h3>Laravelのバージョン確認</h3></dt>
+  <dd>
+    <pre> docker-compose run --rm artisan -V </pre>
+  </dd>
+</dl>
+
+
+ ## 設定ファイル書き換え
+ <pre> cp src/.env.example src/.env
+ <br> vim src/.env</pre>
+
+ ## .envの書き換え
+<pre>
+DB_CONNECTION=mysql <br>
+DB_HOST=mysql <br>
+DB_PORT=3306 <br>
+DB_DATABASE=homestead <br>
+DB_USERNAME=homestead <br>
+DB_PASSWORD=secret
+ </pre>
+
+## App keyの生成
+ <pre>docker-compose run --rm artisan key:generate</pre>
+
+## WEBページの表示確認
 [http://localhost/](http://localhost/)
 
 
-### Dockerの終了
-`docker-compose down`
+## Migrations - DB接続確認
+ <pre>docker-compose run --rm artisan migrate </pre>
 
-### Dockerの起動
-` docker-compose up -d --build site `
+## Dockerの終了
+<pre>docker-compose down</pre>
 
-### command
-- `docker-compose run --rm composer update`
+## Dockerの起動
+<pre>docker-compose up -d --build site</pre>
+
+
+### Auth
+<pre>docker-compose run --rm composer require laravel/ui 
+<br> docker-compose run --rm artisan ui bootstrap --auth 
+<br> docker-compose run --rm npm install 
+<br> docker-compose run --rm npm run dev</pre>
+
+## command
+- `docker-compose run --rm composer install`
 - `docker-compose run --rm npm run dev`
 - `docker-compose run --rm artisan migrate` 
 
 ### Access MySql
-` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead `
-`> show tables `
+` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead`
+<br>` > show tables`
 
+---
+
+### phpMyAdmin を使う場合
+<pre>
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  environment:
+    - PMA_ARBITRARY=1
+    - PMA_HOST=mysql
+    - PMA_USER=homestead
+    - PMA_PASSWORD=secret
+  links:
+    - mysql
+  ports:
+    - 8080:80
+  volumes:
+    - /sessions
+  networks:
+    - laravel
+</pre>
+
+[http://localhost:8080](http://localhost:8080)
+
+---
+
+### Port
 - **nginx** - `:80`
 - **mysql** - `4306:3306`
 - **phpmyadmin** - `8080:80`
 - **php** - `:9000`
 - **redis** - `:6379`
 - **mailhog** - `:8025` 
-
 
 # docker-compose-laravel
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
