@@ -6,10 +6,6 @@
  - ` docker-compose run --rm  composer create-project "laravel/laravel=8.1.*" . `
  - ` cp src/.env.example src/.env`
  - ` vim src/.env`
- - ` docker-compose run --rm artisan key:generate `
-
-### ローカルホストへアクセス
-[http://localhost/](http://localhost/)
 
 ## .envの書き換え
  - ` DB_CONNECTION=mysql `
@@ -18,6 +14,12 @@
  - ` DB_DATABASE=homestead `
  - ` DB_USERNAME=homestead `
  - ` DB_PASSWORD=secret `
+
+ - ` docker-compose run --rm artisan key:generate `
+
+### ローカルホストへアクセス
+[http://localhost/](http://localhost/)
+
 
 ## Migrations
  - ` docker-compose run --rm artisan migrate `
