@@ -1,42 +1,54 @@
-# LaravelをDockerで動かすためのファイル一式
- - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
- - ` cd laravel-docker ` 
- - ` docker-compose up -d --build site `
+# LaravelをDockerで動かすための設定ファイル
 
- ### 最新版
- - ` docker-compose run --rm  composer create-project laravel/laravel . `
+ <pre> git clone https://github.com/fkdgk/laravel-docker.git
+ <br> cd laravel-docker
+ <br> docker-compose up -d --build site</pre>
 
- ### バージョン指定
- - ` docker-compose run --rm  composer create-project "laravel/laravel=8.1.*" . `
 
- #### 設定ファイル書き換え
- - ` cp src/.env.example src/.env`
- - ` vim src/.env`
+## Laravelのインストール
+<dl>
+  <dt><h3>最新版  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dd>
+    <pre> docker-compose run --rm  composer create-project laravel/laravel . </pre>
+  </dd>
+  <dt><h3>バージョン指定  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dd>
+    <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.2.*" . </pre>
+  </dd>
+</dl>
 
-## .envの書き換え
- - ` DB_CONNECTION=mysql `
- - ` DB_HOST=mysql `
- - ` DB_PORT=3306 `
- - ` DB_DATABASE=homestead `
- - ` DB_USERNAME=homestead `
- - ` DB_PASSWORD=secret `
 
- - ` docker-compose run --rm artisan key:generate `
+ ## 設定ファイル書き換え
+ <pre> cp src/.env.example src/.env
+ <br> vim src/.env</pre>
 
-### ローカルホストへアクセス、表示確認
+ ## .envの書き換え
+<pre>
+DB_CONNECTION=mysql <br>
+DB_HOST=mysql <br>
+DB_PORT=3306 <br>
+DB_DATABASE=homestead <br>
+DB_USERNAME=homestead <br>
+DB_PASSWORD=secret
+ </pre>
+
+## App keyの生成
+ <pre>docker-compose run --rm artisan key:generate</pre>
+
+## WEBページの表示確認
 [http://localhost/](http://localhost/)
 
 
 ## Migrations - DB接続確認
- - ` docker-compose run --rm artisan migrate `
+ <pre>docker-compose run --rm artisan migrate </pre>
 
-### Dockerの終了
-`docker-compose down`
+## Dockerの終了
+<pre>docker-compose down</pre>
 
-### Dockerの起動
-` docker-compose up -d --build site `
+## Dockerの起動
+<pre>docker-compose up -d --build site</pre>
 
-### command
+## command
 - `docker-compose run --rm composer install`
 - `docker-compose run --rm npm run dev`
 - `docker-compose run --rm artisan migrate` 
