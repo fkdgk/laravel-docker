@@ -3,6 +3,10 @@
 ` cd laravel-docker ` 
 ` docker-compose up -d --build site`
 ` docker-compose run --rm composer update `
+` docker-compose run --rm composer install `
+` cp .env.example .env`
+` docker-compose run --rm artisan key:generate `
+` docker-compose run --rm artisan migrate `
 
 ### .env の書き換え
 - ` DB_CONNECTION=mysql `
@@ -15,7 +19,7 @@
 ### Dockerの終了
 `docker-compose down`
 
-()`docker-compose run --rm composer create-project laravel/laravel .`
+`docker-compose run --rm composer create-project laravel/laravel .`
 
 ### command
 - `docker-compose run --rm composer update`
