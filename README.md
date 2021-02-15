@@ -13,7 +13,14 @@
   </dd>
   <dt><h3>バージョン指定  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
   <dd>
-    <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.2.*" . </pre>
+    <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.3.*" . </pre>
+  </dd>
+</dl>
+
+<dl>
+  <dt><h3>Laravelのバージョン確認</h3></dt>
+  <dd>
+    <pre> docker-compose run --rm artisan -V </pre>
   </dd>
 </dl>
 
@@ -48,6 +55,13 @@ DB_PASSWORD=secret
 ## Dockerの起動
 <pre>docker-compose up -d --build site</pre>
 
+
+### Auth
+<pre>docker-compose run --rm composer require laravel/ui 
+<br> docker-compose run --rm artisan ui bootstrap --auth 
+<br> docker-compose run --rm npm install 
+<br> docker-compose run --rm npm run dev</pre>
+
 ## command
 - `docker-compose run --rm composer install`
 - `docker-compose run --rm npm run dev`
@@ -57,13 +71,38 @@ DB_PASSWORD=secret
 ` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead`
 <br>` > show tables`
 
+---
+
+### phpMyAdmin を使う場合
+<pre>
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
+  environment:
+    - PMA_ARBITRARY=1
+    - PMA_HOST=mysql
+    - PMA_USER=homestead
+    - PMA_PASSWORD=secret
+  links:
+    - mysql
+  ports:
+    - 8080:80
+  volumes:
+    - /sessions
+  networks:
+    - laravel
+</pre>
+
+[http://localhost:8080](http://localhost:8080)
+
+---
+
+### Port
 - **nginx** - `:80`
 - **mysql** - `4306:3306`
 - **phpmyadmin** - `8080:80`
 - **php** - `:9000`
 - **redis** - `:6379`
 - **mailhog** - `:8025` 
-
 
 # docker-compose-laravel
 A pretty simplified Docker Compose workflow that sets up a LEMP network of containers for local Laravel development. You can view the full article that inspired this repo [here](https://dev.to/aschmelyun/the-beauty-of-docker-for-local-laravel-development-13c0).
