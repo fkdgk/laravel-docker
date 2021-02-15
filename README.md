@@ -19,7 +19,7 @@
 - ` docker-compose run --rm artisan migrate `
 
 ### ローカルホストへアクセス
-()[http://localhost/]
+[http://localhost/](http://localhost/)
 
 
 ### Dockerの終了
