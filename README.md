@@ -1,8 +1,8 @@
 # LaravelをDockerで動かすための設定ファイル
 
  <pre> git clone https://github.com/fkdgk/laravel-docker.git
- <br> cd laravel-docker
- <br> docker-compose up -d --build site</pre>
+ cd laravel-docker
+ docker-compose up -d --build site</pre>
 
 
 ## Laravelのインストール
@@ -26,17 +26,16 @@
 
 
  ## 設定ファイル書き換え
- <pre> cp src/.env.example src/.env
- <br> vim src/.env</pre>
+ <pre>vim src/.env</pre>
 
- ## .envの書き換え
+ ## .envのmysqlの箇所を書き換え
 <pre>
-DB_CONNECTION=mysql <br>
-DB_HOST=mysql <br>
-DB_PORT=3306 <br>
-DB_DATABASE=homestead <br>
-DB_USERNAME=homestead <br>
-DB_PASSWORD=secret
+ DB_CONNECTION=mysql
+ DB_HOST=mysql
+ DB_PORT=3306
+ DB_DATABASE=homestead
+ DB_USERNAME=homestead
+ DB_PASSWORD=secret
  </pre>
 
 ## App keyの生成
@@ -48,6 +47,23 @@ DB_PASSWORD=secret
 
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
+
+
+## Mysql接続情報
+|内容|項目|
+|--|--|
+|ユーザ|homestead|
+|パスワード|secret|
+|ポート|4306|
+|DB名|homestead|
+|ホスト|127.0.0.1|
+
+### MySqlへコマンドラインからアクセス
+<pre>> mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
+> show tables</pre>
+
+### MySqlへコマンドラインからアクセス
+
 
 ## Dockerの終了
 <pre>docker-compose down</pre>
@@ -67,9 +83,6 @@ DB_PASSWORD=secret
 - `docker-compose run --rm npm run dev`
 - `docker-compose run --rm artisan migrate` 
 
-### Access MySql
-` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead`
-<br>` > show tables`
 
 ---
 
