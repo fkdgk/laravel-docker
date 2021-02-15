@@ -3,20 +3,9 @@
  - ` cd laravel-docker ` 
  - ` docker-compose up -d --build site `
  - ` cp src/.env.example src/.env`
-
-### src/.env の内容を変更する
-- ` DB_CONNECTION=mysql `
-- ` DB_HOST=mysql `
-- ` DB_PORT=3306 `
-- ` DB_DATABASE=homestead `
-- ` DB_USERNAME=homestead `
-- ` DB_PASSWORD=secret `
-
----
-
-- ` docker-compose run --rm composer install `
-- ` docker-compose run --rm artisan key:generate `
-- ` docker-compose run --rm artisan migrate `
+ - ` docker-compose run --rm composer install `
+ - ` docker-compose run --rm artisan key:generate `
+ - ` docker-compose run --rm artisan migrate `
 
 ### ローカルホストへアクセス
 [http://localhost/](http://localhost/)
@@ -28,8 +17,6 @@
 ### Dockerの起動
 ` docker-compose up -d --build site `
 
-`docker-compose run --rm composer create-project laravel/laravel .`
-
 ### command
 - `docker-compose run --rm composer update`
 - `docker-compose run --rm npm run dev`
@@ -37,7 +24,7 @@
 
 ### Access MySql
 ` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead `
-` show tables `
+`> show tables `
 
 - **nginx** - `:80`
 - **mysql** - `4306:3306`
