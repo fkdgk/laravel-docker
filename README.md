@@ -2,8 +2,14 @@
  - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
  - ` cd laravel-docker ` 
  - ` docker-compose up -d --build site `
+
+ ### 最新版
  - ` docker-compose run --rm  composer create-project laravel/laravel . `
+
+ ### バージョン指定
  - ` docker-compose run --rm  composer create-project "laravel/laravel=8.1.*" . `
+
+ #### 設定ファイル書き換え
  - ` cp src/.env.example src/.env`
  - ` vim src/.env`
 
@@ -17,11 +23,11 @@
 
  - ` docker-compose run --rm artisan key:generate `
 
-### ローカルホストへアクセス
+### ローカルホストへアクセス、表示確認
 [http://localhost/](http://localhost/)
 
 
-## Migrations
+## Migrations - DB接続確認
  - ` docker-compose run --rm artisan migrate `
 
 ### Dockerの終了
