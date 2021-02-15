@@ -19,7 +19,7 @@
 - ` docker-compose run --rm artisan migrate `
 
 ### ローカルホストへアクセス
-()[http://localhost/]
+[http://localhost/](http://localhost/)
 
 
 ### Dockerの終了
@@ -35,8 +35,13 @@
 - `docker-compose run --rm npm run dev`
 - `docker-compose run --rm artisan migrate` 
 
+### Access MySql
+` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead `
+` show tables `
+
 - **nginx** - `:80`
-- **mysql** - `:3306`
+- **mysql** - `4306:3306`
+- **phpmyadmin** - `8080:80`
 - **php** - `:9000`
 - **redis** - `:6379`
 - **mailhog** - `:8025` 
