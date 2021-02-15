@@ -2,7 +2,6 @@
  - ` git clone https://github.com/fkdgk/laravel-docker.git ` 
  - ` cd laravel-docker ` 
  - ` docker-compose up -d --build site `
- - ` docker-compose run --rm composer update `
  - ` cp src/.env.example src/.env`
 
 ### src/.env の内容を変更する
@@ -13,13 +12,21 @@
 - ` DB_USERNAME=homestead `
 - ` DB_PASSWORD=secret `
 
+---
 
- - ` docker-compose run --rm artisan key:generate `
- - ` docker-compose run --rm artisan migrate `
+- ` docker-compose run --rm composer install `
+- ` docker-compose run --rm artisan key:generate `
+- ` docker-compose run --rm artisan migrate `
+
+### ローカルホストへアクセス
+()[http://localhost/]
 
 
 ### Dockerの終了
 `docker-compose down`
+
+### Dockerの起動
+` docker-compose up -d --build site `
 
 `docker-compose run --rm composer create-project laravel/laravel .`
 
