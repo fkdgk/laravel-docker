@@ -36,21 +36,21 @@ services:
     networks:
       - laravel
       
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    environment:
-      - PMA_ARBITRARY=1
-      - PMA_HOST=mysql
-      - PMA_USER=homestead
-      - PMA_PASSWORD=secret
-    links:
-      - mysql
-    ports:
-      - 8080:80
-    volumes:
-      - /sessions
-    networks:
-      - laravel
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   environment:
+  #     - PMA_ARBITRARY=1
+  #     - PMA_HOST=mysql
+  #     - PMA_USER=homestead
+  #     - PMA_PASSWORD=secret
+  #   links:
+  #     - mysql
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - /sessions
+  #   networks:
+  #     - laravel
 
   php:
     build:
