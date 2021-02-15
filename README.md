@@ -54,8 +54,8 @@ DB_PASSWORD=secret
 - `docker-compose run --rm artisan migrate` 
 
 ### Access MySql
-` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead `
-`> show tables `
+` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead`
+<br>` > show tables`
 
 - **nginx** - `:80`
 - **mysql** - `4306:3306`
