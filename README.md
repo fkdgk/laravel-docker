@@ -47,16 +47,15 @@
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
-
 ## Dockerのインスタンスからcomposerを使えるようにする
  <pre>sh composer_install.sh</pre>
 
 ### Dockerへログイン
 <pre>docker-compose exec php sh</pre>
 
-### Docker（php）から
-<pre>php composer -V </pre>
-<pre>php artisan -V </pre>
+### Dockerからcomposerとartisanを実行する
+<pre>php composer -V</pre>
+<pre>php artisan -V</pre>
 
 ## Mysql接続情報
 |内容|項目|
@@ -68,7 +67,7 @@
 |ホスト|127.0.0.1|
 
 ### MySqlへコマンドラインからアクセス
-<pre>> mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
+<pre>mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
 > show tables</pre>
 
 ## Dockerの終了
