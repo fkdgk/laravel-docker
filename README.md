@@ -1,17 +1,17 @@
 # LaravelをDockerで動かすための設定ファイル
 
  <pre> git clone https://github.com/fkdgk/laravel-docker.git
- <br> cd laravel-docker
- <br> docker-compose up -d --build site</pre>
+ cd laravel-docker
+ docker-compose up -d --build site</pre>
 
 
 ## Laravelのインストール
 <dl>
-  <dt><h3>最新版  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dt><h3>最新版のLaravelを使う場合  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
   <dd>
     <pre> docker-compose run --rm  composer create-project laravel/laravel . </pre>
   </dd>
-  <dt><h3>バージョン指定  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dt><h3>バージョン指定してLaravelを使う場合  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
   <dd>
     <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.3.*" . </pre>
   </dd>
@@ -26,17 +26,16 @@
 
 
  ## 設定ファイル書き換え
- <pre> cp src/.env.example src/.env
- <br> vim src/.env</pre>
+ <pre>vim src/.env</pre>
 
- ## .envの書き換え
+ ## .envのmysqlの箇所を書き換え
 <pre>
-DB_CONNECTION=mysql <br>
-DB_HOST=mysql <br>
-DB_PORT=3306 <br>
-DB_DATABASE=homestead <br>
-DB_USERNAME=homestead <br>
-DB_PASSWORD=secret
+ DB_CONNECTION=mysql
+ DB_HOST=mysql
+ DB_PORT=3306
+ DB_DATABASE=homestead
+ DB_USERNAME=homestead
+ DB_PASSWORD=secret
  </pre>
 
 ## App keyの生成
@@ -49,27 +48,44 @@ DB_PASSWORD=secret
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
+## Mysql接続情報
+|内容|項目|
+|--|--|
+|ユーザ|homestead|
+|パスワード|secret|
+|ポート|4306|
+|DB名|homestead|
+|ホスト|127.0.0.1|
+
+### MySqlへコマンドラインからアクセス
+<pre>> mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
+> show tables</pre>
+
+### MySqlへコマンドラインからアクセス
+
+
 ## Dockerの終了
 <pre>docker-compose down</pre>
 
 ## Dockerの起動
 <pre>docker-compose up -d --build site</pre>
 
-
 ### Auth
 <pre>docker-compose run --rm composer require laravel/ui 
-<br> docker-compose run --rm artisan ui bootstrap --auth 
-<br> docker-compose run --rm npm install 
-<br> docker-compose run --rm npm run dev</pre>
+docker-compose run --rm artisan ui bootstrap --auth 
+docker-compose run --rm npm install 
+docker-compose run --rm npm run dev</pre>
 
 ## command
-- `docker-compose run --rm composer install`
-- `docker-compose run --rm npm run dev`
-- `docker-compose run --rm artisan migrate` 
+- `composer：docker-compose run --rm composer install`
+- `artisan：docker-compose run --rm artisan migrate` 
+- `npm：docker-compose run --rm npm run dev`
 
-### Access MySql
-` mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead`
-<br>` > show tables`
+## Dockerのインスタンスからcomposerを使えるようにする
+ <pre>sh composer_install.sh</pre>
+
+### Docker（php）から
+<pre>php composer -V </pre>
 
 ---
 
