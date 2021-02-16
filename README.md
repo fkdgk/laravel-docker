@@ -7,11 +7,11 @@
 
 ## Laravelのインストール
 <dl>
-  <dt><h3>最新版  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dt><h3>最新版のLaravelを使う場合  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
   <dd>
     <pre> docker-compose run --rm  composer create-project laravel/laravel . </pre>
   </dd>
-  <dt><h3>バージョン指定  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
+  <dt><h3>バージョン指定してLaravelを使う場合  <small> （※ 末尾の” . ”を忘れずに）</small></h3></dt>
   <dd>
     <pre>  docker-compose run --rm  composer create-project "laravel/laravel=7.3.*" . </pre>
   </dd>
@@ -48,7 +48,6 @@
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
-
 ## Mysql接続情報
 |内容|項目|
 |--|--|
@@ -71,18 +70,22 @@
 ## Dockerの起動
 <pre>docker-compose up -d --build site</pre>
 
-
 ### Auth
 <pre>docker-compose run --rm composer require laravel/ui 
-<br> docker-compose run --rm artisan ui bootstrap --auth 
-<br> docker-compose run --rm npm install 
-<br> docker-compose run --rm npm run dev</pre>
+docker-compose run --rm artisan ui bootstrap --auth 
+docker-compose run --rm npm install 
+docker-compose run --rm npm run dev</pre>
 
 ## command
-- `docker-compose run --rm composer install`
-- `docker-compose run --rm npm run dev`
-- `docker-compose run --rm artisan migrate` 
+- `composer：docker-compose run --rm composer install`
+- `artisan：docker-compose run --rm artisan migrate` 
+- `npm：docker-compose run --rm npm run dev`
 
+## Dockerのインスタンスからcomposerを使えるようにする
+ <pre>sh composer_install.sh</pre>
+
+### Docker（php）から
+<pre>php composer -V </pre>
 
 ---
 
