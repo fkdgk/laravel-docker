@@ -11,18 +11,8 @@ then
     exit 1
 fi
 
-# php composer-setup.php --quiet
 php composer-setup.php
 rm composer-setup.php
-mv composer.phar /usr/local/bin/composer
-composer -V
+mv composer.phar ./src/composer
 
-#RESULT=$?
-#exit $RESULT
-#rm composer-setup.php
-#
-#mv ./composer.phar /usr/local/bin/composer
-#
-#echo ${BASH_SOURCE[0]}
-#
-#exit $RESULT
+rm composer_install.sh
