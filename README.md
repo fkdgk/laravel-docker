@@ -65,7 +65,7 @@
 
 
 ## Dockerの終了
-<pre>docker-compose down</pre>
+<pre>docker-compose stop</pre>
 
 ## Dockerの起動
 <pre>docker-compose up -d --build site</pre>
@@ -87,9 +87,12 @@ docker-compose run --rm npm run dev</pre>
 ### Docker（php）から
 <pre>php composer -V </pre>
 
+### Dockerへ入っる
+<pre>docker-compose exec php sh</pre>
+
 ---
 
-### phpMyAdmin を使う場合
+### phpMyAdmin を使う場合 docker-compose.ymlに以下を追加
 <pre>
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
