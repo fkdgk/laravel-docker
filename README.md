@@ -24,7 +24,6 @@
   </dd>
 </dl>
 
-
  ## 設定ファイル書き換え
  <pre>vim src/.env</pre>
 
@@ -48,6 +47,17 @@
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
+
+## Dockerのインスタンスからcomposerを使えるようにする
+ <pre>sh composer_install.sh</pre>
+
+### Dockerへログイン
+<pre>docker-compose exec php sh</pre>
+
+### Docker（php）から
+<pre>php composer -V </pre>
+<pre>php artisan -V </pre>
+
 ## Mysql接続情報
 |内容|項目|
 |--|--|
@@ -60,9 +70,6 @@
 ### MySqlへコマンドラインからアクセス
 <pre>> mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
 > show tables</pre>
-
-### MySqlへコマンドラインからアクセス
-
 
 ## Dockerの終了
 <pre>docker-compose stop</pre>
@@ -80,15 +87,6 @@ docker-compose run --rm npm run dev</pre>
 - `composer：docker-compose run --rm composer install`
 - `artisan：docker-compose run --rm artisan migrate` 
 - `npm：docker-compose run --rm npm run dev`
-
-## Dockerのインスタンスからcomposerを使えるようにする
- <pre>sh composer_install.sh</pre>
-
-### Docker（php）から
-<pre>php composer -V </pre>
-
-### Dockerへ入っる
-<pre>docker-compose exec php sh</pre>
 
 ---
 
