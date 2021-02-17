@@ -35,6 +35,9 @@
  <pre>docker-compose run --rm artisan key:generate</pre>
  -->
 
+<<<<<<< HEAD
+>>>>>>> 3.1.10
+=======
 >>>>>>> 3.1.10
  ## 設定ファイル書き換え
  <pre>vim src/.env</pre>
