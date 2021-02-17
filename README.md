@@ -17,13 +17,25 @@
   </dd>
 </dl>
 
-<dl>
+## WEBページの表示確認
+[http://localhost/](http://localhost/)
+
+
+<!-- <dl>
   <dt><h3>Laravelのバージョン確認</h3></dt>
   <dd>
     <pre> docker-compose run --rm artisan -V </pre>
   </dd>
-</dl>
+</dl> -->
 
+<<<<<<< HEAD
+=======
+
+<!-- ## App keyの生成
+ <pre>docker-compose run --rm artisan key:generate</pre>
+ -->
+
+>>>>>>> 3.1.10
  ## 設定ファイル書き換え
  <pre>vim src/.env</pre>
 
@@ -36,12 +48,6 @@
  DB_USERNAME=homestead
  DB_PASSWORD=secret
  </pre>
-
-## App keyの生成
- <pre>docker-compose run --rm artisan key:generate</pre>
-
-## WEBページの表示確認
-[http://localhost/](http://localhost/)
 
 
 ## Migrations - DB接続確認
