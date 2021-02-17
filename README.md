@@ -28,7 +28,6 @@
   </dd>
 </dl> -->
 
-
 <!-- ## App keyの生成
  <pre>docker-compose run --rm artisan key:generate</pre>
  -->
@@ -50,6 +49,16 @@
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
+## Dockerのインスタンスからcomposerを使えるようにする
+ <pre>sh composer_install.sh</pre>
+
+### Dockerへログイン
+<pre>docker-compose exec php sh</pre>
+
+### Dockerからcomposerとartisanを実行する
+<pre>php composer -V</pre>
+<pre>php artisan -V</pre>
+
 ## Mysql接続情報
 |内容|項目|
 |--|--|
@@ -60,14 +69,11 @@
 |ホスト|127.0.0.1|
 
 ### MySqlへコマンドラインからアクセス
-<pre>> mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
+<pre>mysql -uhomestead -psecret -P4306 -h127.0.0.1 homestead
 > show tables</pre>
 
-### MySqlへコマンドラインからアクセス
-
-
 ## Dockerの終了
-<pre>docker-compose down</pre>
+<pre>docker-compose stop</pre>
 
 ## Dockerの起動
 <pre>docker-compose up -d --build site</pre>
@@ -83,15 +89,9 @@ docker-compose run --rm npm run dev</pre>
 - `artisan：docker-compose run --rm artisan migrate` 
 - `npm：docker-compose run --rm npm run dev`
 
-## Dockerのインスタンスからcomposerを使えるようにする
- <pre>sh composer_install.sh</pre>
-
-### Docker（php）から
-<pre>php composer -V </pre>
-
 ---
 
-### phpMyAdmin を使う場合
+### phpMyAdmin を使う場合 docker-compose.ymlに以下を追加
 <pre>
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
