@@ -45,15 +45,17 @@
  DB_PASSWORD=secret
  </pre>
 
-
 ## Migrations - DB接続確認
  <pre>docker-compose run --rm artisan migrate </pre>
 
 ## Dockerのインスタンスからcomposerを使えるようにする
- <pre>sh composer_install.sh</pre>
+ <pre>mv composer_install.sh src</pre>
 
 ### Dockerへログイン
 <pre>docker-compose exec php sh</pre>
+
+### composer install
+<pre>sh composer_install.sh</pre>
 
 ### Dockerからcomposerとartisanを実行する
 <pre>php composer -V</pre>
